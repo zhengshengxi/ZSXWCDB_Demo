@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		5F10D55822CC9B310046964E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F10D55722CC9B310046964E /* AppDelegate.m */; };
-		5F10D55B22CC9B310046964E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F10D55A22CC9B310046964E /* ViewController.m */; };
+		5F10D55B22CC9B310046964E /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5F10D55A22CC9B310046964E /* ViewController.mm */; };
 		5F10D55E22CC9B310046964E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F10D55C22CC9B310046964E /* Main.storyboard */; };
 		5F10D56022CC9B340046964E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F10D55F22CC9B340046964E /* Assets.xcassets */; };
 		5F10D56322CC9B340046964E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F10D56122CC9B340046964E /* LaunchScreen.storyboard */; };
 		5F10D56622CC9B340046964E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F10D56522CC9B340046964E /* main.m */; };
 		5F10D57022CC9B340046964E /* ZSXWCDB_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F10D56F22CC9B340046964E /* ZSXWCDB_DemoTests.m */; };
 		5F10D57B22CC9B340046964E /* ZSXWCDB_DemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F10D57A22CC9B340046964E /* ZSXWCDB_DemoUITests.m */; };
+		5F10D58A22CCA5D30046964E /* Message.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5F10D58922CCA5D30046964E /* Message.mm */; };
+		5F1506A722CDAF2700B34BE3 /* Content.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5F1506A622CDAF2700B34BE3 /* Content.mm */; };
+		CEBB77E5C0BC3A03BB68C82B /* libPods-ZSXWCDB_Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE39FA8AE0876B0AD293510F /* libPods-ZSXWCDB_Demo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2206C7453D0CB656080EFC4B /* Pods-ZSXWCDB_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZSXWCDB_Demo.release.xcconfig"; path = "Target Support Files/Pods-ZSXWCDB_Demo/Pods-ZSXWCDB_Demo.release.xcconfig"; sourceTree = "<group>"; };
 		5F10D55322CC9B310046964E /* ZSXWCDB_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZSXWCDB_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F10D55622CC9B310046964E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5F10D55722CC9B310046964E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5F10D55922CC9B310046964E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5F10D55A22CC9B310046964E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5F10D55A22CC9B310046964E /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		5F10D55D22CC9B310046964E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5F10D55F22CC9B340046964E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F10D56222CC9B340046964E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +55,12 @@
 		5F10D57622CC9B340046964E /* ZSXWCDB_DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZSXWCDB_DemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F10D57A22CC9B340046964E /* ZSXWCDB_DemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZSXWCDB_DemoUITests.m; sourceTree = "<group>"; };
 		5F10D57C22CC9B340046964E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F10D58822CCA5D30046964E /* Message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		5F10D58922CCA5D30046964E /* Message.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Message.mm; sourceTree = "<group>"; };
+		5F1506A522CDAF2700B34BE3 /* Content.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Content.h; sourceTree = "<group>"; };
+		5F1506A622CDAF2700B34BE3 /* Content.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Content.mm; sourceTree = "<group>"; };
+		867F73334B4A25D2D321C4AD /* Pods-ZSXWCDB_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZSXWCDB_Demo.debug.xcconfig"; path = "Target Support Files/Pods-ZSXWCDB_Demo/Pods-ZSXWCDB_Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		DE39FA8AE0876B0AD293510F /* libPods-ZSXWCDB_Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZSXWCDB_Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEBB77E5C0BC3A03BB68C82B /* libPods-ZSXWCDB_Demo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1755A56846FEA2FC97831E2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE39FA8AE0876B0AD293510F /* libPods-ZSXWCDB_Demo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5F10D54A22CC9B310046964E = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +104,8 @@
 				5F10D56E22CC9B340046964E /* ZSXWCDB_DemoTests */,
 				5F10D57922CC9B340046964E /* ZSXWCDB_DemoUITests */,
 				5F10D55422CC9B310046964E /* Products */,
+				D823CBCFC5BF515FB93C8D70 /* Pods */,
+				1755A56846FEA2FC97831E2D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,7 +125,11 @@
 				5F10D55622CC9B310046964E /* AppDelegate.h */,
 				5F10D55722CC9B310046964E /* AppDelegate.m */,
 				5F10D55922CC9B310046964E /* ViewController.h */,
-				5F10D55A22CC9B310046964E /* ViewController.m */,
+				5F10D55A22CC9B310046964E /* ViewController.mm */,
+				5F10D58822CCA5D30046964E /* Message.h */,
+				5F10D58922CCA5D30046964E /* Message.mm */,
+				5F1506A522CDAF2700B34BE3 /* Content.h */,
+				5F1506A622CDAF2700B34BE3 /* Content.mm */,
 				5F10D55C22CC9B310046964E /* Main.storyboard */,
 				5F10D55F22CC9B340046964E /* Assets.xcassets */,
 				5F10D56122CC9B340046964E /* LaunchScreen.storyboard */,
@@ -132,6 +157,15 @@
 			path = ZSXWCDB_DemoUITests;
 			sourceTree = "<group>";
 		};
+		D823CBCFC5BF515FB93C8D70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				867F73334B4A25D2D321C4AD /* Pods-ZSXWCDB_Demo.debug.xcconfig */,
+				2206C7453D0CB656080EFC4B /* Pods-ZSXWCDB_Demo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,6 +173,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F10D57F22CC9B340046964E /* Build configuration list for PBXNativeTarget "ZSXWCDB_Demo" */;
 			buildPhases = (
+				A76DAE20122562D79173C486 /* [CP] Check Pods Manifest.lock */,
 				5F10D54F22CC9B310046964E /* Sources */,
 				5F10D55022CC9B310046964E /* Frameworks */,
 				5F10D55122CC9B310046964E /* Resources */,
@@ -257,13 +292,40 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A76DAE20122562D79173C486 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZSXWCDB_Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5F10D54F22CC9B310046964E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F10D55B22CC9B310046964E /* ViewController.m in Sources */,
+				5F10D55B22CC9B310046964E /* ViewController.mm in Sources */,
+				5F10D58A22CCA5D30046964E /* Message.mm in Sources */,
 				5F10D56622CC9B340046964E /* main.m in Sources */,
+				5F1506A722CDAF2700B34BE3 /* Content.mm in Sources */,
 				5F10D55822CC9B310046964E /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,7 +432,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -423,7 +485,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -433,6 +495,7 @@
 		};
 		5F10D58022CC9B340046964E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 867F73334B4A25D2D321C4AD /* Pods-ZSXWCDB_Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -449,6 +512,7 @@
 		};
 		5F10D58122CC9B340046964E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2206C7453D0CB656080EFC4B /* Pods-ZSXWCDB_Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
