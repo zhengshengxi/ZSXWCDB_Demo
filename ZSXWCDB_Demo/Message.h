@@ -18,12 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property(retain) NSDate *createTime;
 @property(retain) NSDate *modifiedTime;
 @property(assign) NSInteger unused;
-@property(nonatomic,strong) Content *content;
+//@property(nonatomic,strong) Content *content;
 
 WCDB_PROPERTY(localID)
 WCDB_PROPERTY(createTime)
 WCDB_PROPERTY(modifiedTime)
-WCDB_PROPERTY(content)
+WCDB_PROPERTY(unused)
+//WCDB_PROPERTY(content)
 
 @end
 
