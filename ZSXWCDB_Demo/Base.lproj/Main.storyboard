@@ -61,10 +61,11 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Oen-HV-swT">
-                                <rect key="frame" x="140" y="682" width="95" height="29"/>
+                                <rect key="frame" x="93.666666666666686" y="682" width="188" height="29"/>
                                 <segments>
                                     <segment title="wcdb"/>
                                     <segment title="fmdb"/>
+                                    <segment title="bgfmdb"/>
                                 </segments>
                             </segmentedControl>
                         </subviews>

@@ -17,6 +17,7 @@
 		5F10D57B22CC9B340046964E /* ZSXWCDB_DemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F10D57A22CC9B340046964E /* ZSXWCDB_DemoUITests.m */; };
 		5F10D58A22CCA5D30046964E /* Message.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5F10D58922CCA5D30046964E /* Message.mm */; };
 		5F1506A722CDAF2700B34BE3 /* Content.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5F1506A622CDAF2700B34BE3 /* Content.mm */; };
+		5F1506AA22CDFD5400B34BE3 /* MessageBG.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1506A922CDFD5400B34BE3 /* MessageBG.m */; };
 		CEBB77E5C0BC3A03BB68C82B /* libPods-ZSXWCDB_Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE39FA8AE0876B0AD293510F /* libPods-ZSXWCDB_Demo.a */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,8 @@
 		5F10D58922CCA5D30046964E /* Message.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Message.mm; sourceTree = "<group>"; };
 		5F1506A522CDAF2700B34BE3 /* Content.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Content.h; sourceTree = "<group>"; };
 		5F1506A622CDAF2700B34BE3 /* Content.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Content.mm; sourceTree = "<group>"; };
+		5F1506A822CDFD5400B34BE3 /* MessageBG.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageBG.h; sourceTree = "<group>"; };
+		5F1506A922CDFD5400B34BE3 /* MessageBG.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageBG.m; sourceTree = "<group>"; };
 		867F73334B4A25D2D321C4AD /* Pods-ZSXWCDB_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZSXWCDB_Demo.debug.xcconfig"; path = "Target Support Files/Pods-ZSXWCDB_Demo/Pods-ZSXWCDB_Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		DE39FA8AE0876B0AD293510F /* libPods-ZSXWCDB_Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZSXWCDB_Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -130,6 +133,8 @@
 				5F10D58922CCA5D30046964E /* Message.mm */,
 				5F1506A522CDAF2700B34BE3 /* Content.h */,
 				5F1506A622CDAF2700B34BE3 /* Content.mm */,
+				5F1506A822CDFD5400B34BE3 /* MessageBG.h */,
+				5F1506A922CDFD5400B34BE3 /* MessageBG.m */,
 				5F10D55C22CC9B310046964E /* Main.storyboard */,
 				5F10D55F22CC9B340046964E /* Assets.xcassets */,
 				5F10D56122CC9B340046964E /* LaunchScreen.storyboard */,
@@ -324,6 +329,7 @@
 			files = (
 				5F10D55B22CC9B310046964E /* ViewController.mm in Sources */,
 				5F10D58A22CCA5D30046964E /* Message.mm in Sources */,
+				5F1506AA22CDFD5400B34BE3 /* MessageBG.m in Sources */,
 				5F10D56622CC9B340046964E /* main.m in Sources */,
 				5F1506A722CDAF2700B34BE3 /* Content.mm in Sources */,
 				5F10D55822CC9B310046964E /* AppDelegate.m in Sources */,

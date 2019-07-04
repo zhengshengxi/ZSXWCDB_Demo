@@ -1,5 +1,6 @@
 platform :ios, ’9.0’
 target:”ZSXWCDB_Demo” do
     pod 'WCDB'
-    pod 'FMDB'
+#    pod 'FMDB'
+    pod 'BGFMDB'
 end

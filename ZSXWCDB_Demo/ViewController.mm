@@ -9,11 +9,14 @@
 #import "ViewController.h"
 #import "Message.h"
 #import "FMDatabase.h"
+#import "BGFMDB.h"
+#import "MessageBG.h"
 
 @interface ViewController () {
     dispatch_queue_t  queue;
     Message *message;
     NSMutableArray *mArr;
+    MessageBG *messageBG;
 }
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segC;
@@ -29,6 +32,22 @@
     [super viewDidLoad];
     queue = dispatch_queue_create("com.fw.queue", DISPATCH_QUEUE_CONCURRENT);
     [self createDB];
+    
+    if (!message) {
+        message = [[Message alloc] init];
+        message.isAutoIncrement = YES;
+        //        message.localID = 1;
+        //            message.content = [Content new];
+        message.createTime = [NSDate date];
+        message.modifiedTime = [NSDate date];
+        message.unused = 1;
+    }
+    if (!messageBG) {
+        messageBG = [[MessageBG alloc] init];
+        messageBG.createTime = [NSDate date];
+        messageBG.modifiedTime = [NSDate date];
+        messageBG.unused = 1;
+    }
 }
 
 -(BOOL)createDB {
@@ -80,24 +99,15 @@
 
 - (IBAction)insertAction:(UIButton *)sender {
     __block NSString *log;
-    NSInteger count = 100000;
+    NSInteger count = 10000;
     CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
     if (self.segC.selectedSegmentIndex == 0) {
         //插入
-        if (!message) {
-            message = [[Message alloc] init];
-            message.isAutoIncrement = YES;
-            //        message.localID = 1;
-//            message.content = [Content new];
-            message.createTime = [NSDate date];
-            message.modifiedTime = [NSDate date];
-            message.unused = 1;
-        }
         /*
          INSERT INTO message(localID, content, createTime, modifiedTime)
          VALUES(1, "Hello, WCDB!", 1496396165, 1496396165);
          */
-        
+        /*
         startTime = CFAbsoluteTimeGetCurrent();
         [self.database insertObject:message into:@"message"];
         //        [self.database insertOrReplaceObject:message into:@"message"];
@@ -109,7 +119,7 @@
         dispatch_async(queue, ^{
             
         });
-         return;
+         return;*/
         
 //        if (!mArr) {
 //            mArr = [NSMutableArray new];
@@ -144,10 +154,10 @@
             
         });
     }
-    else {
+    else if (self.segC.selectedSegmentIndex == 1) {
         startTime = CFAbsoluteTimeGetCurrent();
         [self.fmdb open];
-        
+        /*
         //1.开启事务
 //        [self.fmdb beginTransaction];
         BOOL result = [self.fmdb executeUpdate:@"insert into 'message'(createTime,modifiedTime,unused) values(?,?,?)" withArgumentsInArray:@[[NSDate date],[NSDate date],@1]];
@@ -162,7 +172,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.textView insertText:log];
         });
-        return;
+        return;*/
         CFAbsoluteTime startTime2 = CFAbsoluteTimeGetCurrent();
         //1.开启事务
         [self.fmdb beginTransaction];
@@ -178,6 +188,24 @@
         
         [self.fmdb close];
         [self scrollToBottom];
+    }
+    else {
+        /*
+        startTime = CFAbsoluteTimeGetCurrent();
+        [message bg_save];
+        CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
+        NSString *log = [NSString stringWithFormat:@"BGFMDB插入一条数据方法耗时: %f ms\n", endTime * 1000.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.textView insertText:log];
+        });
+        */
+        startTime = CFAbsoluteTimeGetCurrent();
+        [MessageBG saveWithMessage:messageBG count:count];
+        CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
+        log = [NSString stringWithFormat:@"BGFMDB插入%ld条数据方法耗时: %f ms\n", count, endTime * 1000.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.textView insertText:log];
+        });
     }
 }
 
@@ -199,7 +227,7 @@
             [self.textView insertText:log2];
         });
     }
-    else {
+    else if (self.segC.selectedSegmentIndex == 1) {
         CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
         [self.fmdb open];
         FMResultSet *result = [self.fmdb executeQuery:@"SELECT count(*) FROM message"];
@@ -222,6 +250,24 @@
             [self.textView insertText:log2];
         });
     }
+    else {
+        CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+        NSInteger count = [messageBG.class bg_count:@"MessageBG" where:@""];
+        CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
+        NSString *log = [NSString stringWithFormat:@"BGFMDB查询表count耗时: %f ms\n", endTime * 1000.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.textView insertText:log];
+        });
+        
+        startTime = CFAbsoluteTimeGetCurrent();
+        [messageBG.class bg_clear:@"MessageBG"];
+        endTime = (CFAbsoluteTimeGetCurrent() - startTime);
+        NSString *log2 = [NSString stringWithFormat:@"BGFMDB清除%ld条数据方法耗时: %f ms\n\n", count, endTime * 1000.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.textView insertText:log2];
+        });
+    }
+    
     
     [self scrollToBottom];
 }
@@ -244,7 +290,7 @@
             [self.textView insertText:log2];
         });
     }
-    else {
+    else if (self.segC.selectedSegmentIndex == 1) {
         CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
         [self.fmdb open];
         FMResultSet *result = [self.fmdb executeQuery:@"SELECT count(*) FROM message"];
@@ -267,6 +313,23 @@
             [self.textView insertText:log2];
         });
     }
+    else {
+        CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+        NSInteger count = [messageBG.class bg_count:@"MessageBG" where:@""];
+        CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
+        NSString *log = [NSString stringWithFormat:@"BGFMDB查询表count耗时: %f ms\n", endTime * 1000.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.textView insertText:log];
+        });
+        
+        startTime = CFAbsoluteTimeGetCurrent();
+        [MessageBG zsx_update];
+        endTime = (CFAbsoluteTimeGetCurrent() - startTime);
+        NSString *log2 = [NSString stringWithFormat:@"BGFMDB更新%ld条数据方法耗时: %f ms\n\n", count, endTime * 1000.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.textView insertText:log2];
+        });
+    }
     
     [self scrollToBottom];
 }
@@ -275,19 +338,19 @@
     __block NSString *log;
     if (self.segC.selectedSegmentIndex == 0) {
         CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
-            NSArray *arr = [self.database getAllObjectsOfClass:Message.class fromTable:@"message"];
-//        NSArray *arr = [self.database getObjectsOfClass:Message.class fromTable:@"message" where:Message.localID==740942];
+//            NSArray *arr = [self.database getAllObjectsOfClass:Message.class fromTable:@"message"];
+        NSArray *arr = [self.database getObjectsOfClass:Message.class fromTable:@"message" where:Message.localID==1];
         CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
         log = [NSString stringWithFormat:@"WCDB查询%ld条数据耗时: %f ms\n\n", arr.count, endTime * 1000.0];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.textView insertText:log];
         });
     }
-    else {
+    else if (self.segC.selectedSegmentIndex == 1) {
         CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
         [self.fmdb open];
-        FMResultSet *result = [self.fmdb executeQuery:@"select * from 'message'"];
-//        FMResultSet *result = [self.fmdb executeQuery:@"select * from 'message' where localID = ?" withArgumentsInArray:@[@(823346)]];
+//        FMResultSet *result = [self.fmdb executeQuery:@"select * from 'message'"];
+        FMResultSet *result = [self.fmdb executeQuery:@"select * from 'message' where localID = ?" withArgumentsInArray:@[@(1)]];
         NSMutableArray *mArr = [NSMutableArray new];
         while ([result next]) {
             NSMutableDictionary *mDic = [NSMutableDictionary new];
@@ -299,6 +362,16 @@
         }
         CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
         log = [NSString stringWithFormat:@"FMDB查询%ld条数据耗时: %f ms\n\n", mArr.count, endTime * 1000.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.textView insertText:log];
+        });
+    }
+    else {
+        CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+        NSArray *arr = [MessageBG zsx_bg_findWhere];
+//        NSArray *arr = [messageBG.class bg_findAll:@"MessageBG"];
+        CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
+        log = [NSString stringWithFormat:@"BGFMDB查询%ld条数据耗时: %f ms\n\n", arr.count, endTime * 1000.0];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.textView insertText:log];
         });

@@ -1,7 +1,10 @@
 PODS:
-  - FMDB (2.7.5):
-    - FMDB/standard (= 2.7.5)
-  - FMDB/standard (2.7.5)
+  - BGFMDB (2.0.13):
+    - BGFMDB/BG (= 2.0.13)
+    - BGFMDB/FMDB (= 2.0.13)
+  - BGFMDB/BG (2.0.13):
+    - BGFMDB/FMDB
+  - BGFMDB/FMDB (2.0.13)
   - SQLiteRepairKit (1.2.2):
     - WCDBOptimizedSQLCipher (~> 1.2.0)
   - WCDB (1.0.7.5):
@@ -10,22 +13,22 @@ PODS:
   - WCDBOptimizedSQLCipher (1.2.1)
 
 DEPENDENCIES:
-  - FMDB
+  - BGFMDB
   - WCDB
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - FMDB
+    - BGFMDB
     - SQLiteRepairKit
     - WCDB
     - WCDBOptimizedSQLCipher
 
 SPEC CHECKSUMS:
-  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  BGFMDB: 48e6823027232402a678acc7f71484b1fc9171d0
   SQLiteRepairKit: 35aaae5a8838adb85f5b1eb4d796055be6060a4b
   WCDB: 8e90babdeb7784c569353a4bd22a66c0a175a882
   WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
 
-PODFILE CHECKSUM: 185f1dbb6091de60205eea4369008d2cf75d044e
+PODFILE CHECKSUM: 5186d6c8ac8d6539961dd66f36d49553d9fd4438
 
 COCOAPODS: 1.7.1
