@@ -56,6 +56,9 @@
     }
     _realm = [RLMRealm defaultRealm];
 //    realmModel = [[ZSXRealmModel alloc]initWithValue:@[@"hello_Realm",@(1),[NSDate date]]];
+    [ZSXChatModel zsx_registerChangeForTableName:[ZSXChatModel GetTableName] identify:@"123456" block:^(zsx_changeState result) {
+        NSLog(@"");
+    }];
 }
 
 -(BOOL)createDB {
@@ -108,9 +111,9 @@
 }
 
 - (IBAction)insertAction:(UIButton *)sender {
-//    ZSXChatModel *model = [ZSXChatModel new];
-//    [model zsx_insertObject];
-//    return;
+    ZSXChatModel *model = [ZSXChatModel new];
+    [model zsx_insertObject];
+    return;
     __block NSString *log;
     NSInteger count = 10000;
     CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
