@@ -169,10 +169,6 @@ NS_ASSUME_NONNULL_END
         NSLog(@"error opening!: %d", err);
         return NO;
     }
-    else if (err == SQLITE_OK) {
-        NSData *password = [@"123456" dataUsingEncoding:NSASCIIStringEncoding];
-        [self setKeyWithData:password];
-    }
     
     if (_maxBusyRetryTimeInterval > 0.0) {
         // set the handler
@@ -196,10 +192,6 @@ NS_ASSUME_NONNULL_END
     if(err != SQLITE_OK) {
         NSLog(@"error opening!: %d", err);
         return NO;
-    }
-    else if (err == SQLITE_OK) {
-        NSData *password = [@"123456" dataUsingEncoding:NSASCIIStringEncoding];
-        [self setKeyWithData:password];
     }
     
     if (_maxBusyRetryTimeInterval > 0.0) {

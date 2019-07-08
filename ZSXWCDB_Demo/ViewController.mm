@@ -101,9 +101,9 @@
 }
 
 - (IBAction)insertAction:(UIButton *)sender {
-    ZSXChatModel *model = [ZSXChatModel new];
-    [model zsx_insertObject];
-    return;
+//    ZSXChatModel *model = [ZSXChatModel new];
+//    [model zsx_insertObject];
+//    return;
     __block NSString *log;
     NSInteger count = 10000;
     CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
@@ -341,8 +341,8 @@
 }
 
 - (IBAction)btnSelectAction:(UIButton *)sender {
-    [ZSXChatModel zsx_SelectAllObject];
-    return;
+//    [ZSXChatModel zsx_SelectAllObject];
+//    return;
     __block NSString *log;
     if (self.segC.selectedSegmentIndex == 0) {
         CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
@@ -377,7 +377,7 @@
     else {
         CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
 //        NSArray *arr = [MessageBG zsx_bg_findWhere];
-        NSArray *arr = [messageBG.class bg_findAll:@"MessageBG"];
+        NSArray *arr = [messageBG.class bg_findAll:@"Message"];
         CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
         log = [NSString stringWithFormat:@"BGFMDB查询%ld条数据耗时: %f ms\n\n", arr.count, endTime * 1000.0];
         dispatch_async(dispatch_get_main_queue(), ^{
