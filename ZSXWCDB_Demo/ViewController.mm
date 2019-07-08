@@ -12,18 +12,23 @@
 #import "BGFMDB.h"
 #import "MessageBG.h"
 #import "ZSXChatModel.h"
+#import "RLMRealm.h"
+#import "ZSXRealmModel.h"
+#import "RLMResults.h"
 
 @interface ViewController () {
     dispatch_queue_t  queue;
     Message *message;
     NSMutableArray *mArr;
     MessageBG *messageBG;
+    ZSXRealmModel *realmModel;
 }
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segC;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (nonatomic,strong) WCTDatabase *database;
 @property (nonatomic,strong) FMDatabase *fmdb;
+@property (nonatomic,strong) RLMRealm *realm;
 
 @end
 
@@ -49,6 +54,8 @@
         messageBG.modifiedTime = [NSDate date];
         messageBG.unused = 1;
     }
+    _realm = [RLMRealm defaultRealm];
+//    realmModel = [[ZSXRealmModel alloc]initWithValue:@[@"hello_Realm",@(1),[NSDate date]]];
 }
 
 -(BOOL)createDB {
@@ -113,7 +120,7 @@
          INSERT INTO message(localID, content, createTime, modifiedTime)
          VALUES(1, "Hello, WCDB!", 1496396165, 1496396165);
          */
-        
+        /*
         startTime = CFAbsoluteTimeGetCurrent();
         [self.database insertObject:message into:@"message"];
         //        [self.database insertOrReplaceObject:message into:@"message"];
@@ -125,7 +132,7 @@
         dispatch_async(queue, ^{
             
         });
-         return;
+         return;*/
         
 //        if (!mArr) {
 //            mArr = [NSMutableArray new];
@@ -195,7 +202,7 @@
         [self.fmdb close];
         [self scrollToBottom];
     }
-    else {
+    else if(self.segC.selectedSegmentIndex == 2) {
         
         startTime = CFAbsoluteTimeGetCurrent();
         [message bg_save];
@@ -209,6 +216,39 @@
         [MessageBG saveWithMessage:messageBG count:count];
         CFAbsoluteTime endTime2 = (CFAbsoluteTimeGetCurrent() - startTime);
         log = [NSString stringWithFormat:@"BGFMDB插入%ld条数据方法耗时: %f ms\n", count, endTime2 * 1000.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.textView insertText:log];
+        });
+    }
+    else {
+        /*
+        ZSXRealmModel *realmModelTemp = [[ZSXRealmModel alloc]initWithValue:@[@"hello_Realm",@(1),[NSDate date]]];
+        startTime = CFAbsoluteTimeGetCurrent();
+        // 开启事务
+        [self.realm beginWriteTransaction];
+        // 写入数据
+        [self.realm addObject:realmModelTemp];
+        // 关闭事务
+        [self.realm commitWriteTransaction];
+        CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
+        NSString *log = [NSString stringWithFormat:@"Realm插入一条数据方法耗时: %f ms\n", endTime * 1000.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.textView insertText:log];
+        });
+        return;*/
+        
+        startTime = CFAbsoluteTimeGetCurrent();
+        // 开启事务
+        [self.realm beginWriteTransaction];
+        for (int i = 0; i < count; i++) {
+            ZSXRealmModel *realmModelTemp = [[ZSXRealmModel alloc]initWithValue:@[@"hello_Realm",@(1),[NSDate date]]];
+            // 写入数据
+            [self.realm addObject:realmModelTemp];
+        }
+        // 关闭事务
+        [self.realm commitWriteTransaction];
+        CFAbsoluteTime endTime2 = (CFAbsoluteTimeGetCurrent() - startTime);
+        log = [NSString stringWithFormat:@"Realm插入%ld条数据方法耗时: %f ms\n", count, endTime2 * 1000.0];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.textView insertText:log];
         });
@@ -256,7 +296,7 @@
             [self.textView insertText:log2];
         });
     }
-    else {
+    else if(self.segC.selectedSegmentIndex == 2) {
         CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
         NSInteger count = [messageBG.class bg_count:@"MessageBG" where:@""];
         CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
@@ -319,7 +359,7 @@
             [self.textView insertText:log2];
         });
     }
-    else {
+    else if(self.segC.selectedSegmentIndex == 2) {
         CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
         NSInteger count = [messageBG.class bg_count:@"MessageBG" where:@""];
         CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
@@ -374,12 +414,28 @@
             [self.textView insertText:log];
         });
     }
-    else {
+    else if(self.segC.selectedSegmentIndex == 2) {
         CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
 //        NSArray *arr = [MessageBG zsx_bg_findWhere];
         NSArray *arr = [messageBG.class bg_findAll:@"Message"];
         CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
         log = [NSString stringWithFormat:@"BGFMDB查询%ld条数据耗时: %f ms\n\n", arr.count, endTime * 1000.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.textView insertText:log];
+        });
+    }
+    else {
+        CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+        RLMResults *resArr = [ZSXRealmModel objectsWhere:@"chatId>1"];
+        NSMutableArray *mArr = [NSMutableArray new];
+        for (int i = 0; i < resArr.count; i++) {
+            [mArr addObject:[resArr firstObject]];
+        }
+        for (ZSXRealmModel *model in mArr) {
+            NSLog(@"%@",realmModel.message);
+        }
+        CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
+        log = [NSString stringWithFormat:@"Realm查询%ld条数据耗时: %f ms\n\n",resArr.count, endTime * 1000.0];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.textView insertText:log];
         });

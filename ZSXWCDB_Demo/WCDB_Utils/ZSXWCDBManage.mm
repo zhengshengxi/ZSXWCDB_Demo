@@ -50,6 +50,13 @@
     return _database;
 }
 
+-(NSMutableDictionary *)changeBlocks {
+    if (!_changeBlocks) {
+        _changeBlocks = [NSMutableDictionary dictionary];
+    }
+    return _changeBlocks;
+}
+
 -(BOOL)createDBWithClass:(Class)objectClass {
     CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
     BOOL result = NO;
@@ -66,6 +73,51 @@
         }
     }
     return result;
+}
+
+/**
+ 注册数据变化监听.
+ */
+-(BOOL)registerChangeWithName:(NSString* const _Nonnull)name block:(zsx_changeBlock)block {
+    if ([self.changeBlocks.allKeys containsObject:name]){
+        NSString* reason = [NSString stringWithFormat:@"%@表注册监听重复,注册监听失败!",name];
+        NSLog(@"%@",reason);
+        return NO;
+    }else{
+        [self.changeBlocks setObject:block forKey:name];
+        return YES;
+    }
+}
+/**
+ 移除数据变化监听.
+ */
+-(BOOL)removeChangeWithName:(NSString* const _Nonnull)name {
+    if ([self.changeBlocks.allKeys containsObject:name]){
+        [self.changeBlocks removeObjectForKey:name];
+        return YES;
+    }else{
+        NSString* reason = [NSString stringWithFormat:@"%@表还没有注册监听,移除监听失败!",name];
+        NSLog(@"%@",reason);
+        return NO;
+    }
+}
+
+-(void)doChangeWithName:(NSString* const _Nonnull)name flag:(BOOL)flag state:(zsx_changeState)state {
+    if (flag && self.changeBlocks.count>0) {
+        //开一个子线程去执行block,防止死锁.
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,0), ^{
+            [self.changeBlocks enumerateKeysAndObjectsUsingBlock:^(NSString*  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop){
+                NSString* tablename = [key componentsSeparatedByString:@"*"].firstObject;
+                if([name isEqualToString:tablename]){
+                    void(^block)(NSInteger) = obj;
+                    //返回主线程回调.
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        block(state);
+                    });
+                }
+            }];
+        });
+    }
 }
 
 @end

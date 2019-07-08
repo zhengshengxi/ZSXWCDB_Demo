@@ -3,4 +3,5 @@ target:”ZSXWCDB_Demo” do
     pod 'WCDB'
 #    pod 'FMDB'
     pod 'BGFMDB'
+    pod 'Realm'
 end

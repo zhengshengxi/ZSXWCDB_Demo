@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ZSXWCDBConfig.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -46,6 +47,30 @@ NS_ASSUME_NONNULL_BEGIN
  @return 是否成功
  */
 -(BOOL)zsx_deleteAllObject;
+
+/**
+ 注册数据库表变化监听.
+ @tablename 表名称，当此参数为nil时，监听以当前类名为表名的数据表，当此参数非nil时，监听以此参数为表名的数据表。
+ @identify 唯一标识，,此字符串唯一,不可重复,移除监听的时候使用此字符串移除.
+ @return YES: 注册监听成功; NO: 注册监听失败.
+ */
++(BOOL)zsx_registerChangeForTableName:(NSString* _Nullable)tablename identify:(NSString* _Nonnull)identify block:(zsx_changeBlock)block;
+
+/**
+ 移除数据库表变化监听.
+ @tablename 表名称，当此参数为nil时，监听以当前类名为表名的数据表，当此参数非nil时，监听以此参数为表名的数据表。
+ @identify 唯一标识，,此字符串唯一,不可重复,移除监听的时候使用此字符串移除.
+ @return YES: 移除监听成功; NO: 移除监听失败.
+ */
++(BOOL)zsx_removeChangeForTableName:(NSString* _Nullable)tablename identify:(NSString* _Nonnull)identify;
+
+/**
+ 发送数据库变化通知
+
+ @param flag 是否执行通知
+ @param state 数据库变化状态
+ */
++(void)zsx_doChangeWithNameWithflag:(BOOL)flag state:(zsx_changeState)state;
 
 @end
 

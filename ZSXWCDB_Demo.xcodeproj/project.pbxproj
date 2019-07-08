@@ -21,6 +21,7 @@
 		5F1506B122CEE38700B34BE3 /* ZSXMessageModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5F1506AE22CEE38700B34BE3 /* ZSXMessageModel.mm */; };
 		5F1506B722CF146600B34BE3 /* ZSXWCDBManage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5F1506B622CF146600B34BE3 /* ZSXWCDBManage.mm */; };
 		5F1506C522CF297000B34BE3 /* ZSXChatModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5F1506C222CF297000B34BE3 /* ZSXChatModel.mm */; };
+		5F65196122D2EBB4006B7235 /* ZSXRealmModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F65196022D2EBB4006B7235 /* ZSXRealmModel.m */; };
 		5F7CAA6822CF320400F5081A /* NSObject+ZSXWCDBBaseHandle.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5F7CAA6722CF320400F5081A /* NSObject+ZSXWCDBBaseHandle.mm */; };
 		5F7CAA6C22CF32FD00F5081A /* ZSXBaseWCDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7CAA6B22CF32FD00F5081A /* ZSXBaseWCDBModel.m */; };
 		CEBB77E5C0BC3A03BB68C82B /* libPods-ZSXWCDB_Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE39FA8AE0876B0AD293510F /* libPods-ZSXWCDB_Demo.a */; };
@@ -75,6 +76,9 @@
 		5F1506C222CF297000B34BE3 /* ZSXChatModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ZSXChatModel.mm; sourceTree = "<group>"; };
 		5F1506C322CF297000B34BE3 /* ZSXChatModel+WCTTableCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZSXChatModel+WCTTableCoding.h"; sourceTree = "<group>"; };
 		5F1506C422CF297000B34BE3 /* ZSXChatModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZSXChatModel.h; sourceTree = "<group>"; };
+		5F65195E22D2E8C7006B7235 /* ZSXWCDBConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZSXWCDBConfig.h; sourceTree = "<group>"; };
+		5F65195F22D2EBB4006B7235 /* ZSXRealmModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZSXRealmModel.h; sourceTree = "<group>"; };
+		5F65196022D2EBB4006B7235 /* ZSXRealmModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZSXRealmModel.m; sourceTree = "<group>"; };
 		5F7CAA6622CF320400F5081A /* NSObject+ZSXWCDBBaseHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ZSXWCDBBaseHandle.h"; sourceTree = "<group>"; };
 		5F7CAA6722CF320400F5081A /* NSObject+ZSXWCDBBaseHandle.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSObject+ZSXWCDBBaseHandle.mm"; sourceTree = "<group>"; };
 		5F7CAA6A22CF32FD00F5081A /* ZSXBaseWCDBModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZSXBaseWCDBModel.h; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 				5F1506C422CF297000B34BE3 /* ZSXChatModel.h */,
 				5F1506C222CF297000B34BE3 /* ZSXChatModel.mm */,
 				5F1506C322CF297000B34BE3 /* ZSXChatModel+WCTTableCoding.h */,
+				5F65195F22D2EBB4006B7235 /* ZSXRealmModel.h */,
+				5F65196022D2EBB4006B7235 /* ZSXRealmModel.m */,
 				5F10D55C22CC9B310046964E /* Main.storyboard */,
 				5F10D55F22CC9B340046964E /* Assets.xcassets */,
 				5F10D56122CC9B340046964E /* LaunchScreen.storyboard */,
@@ -195,6 +201,7 @@
 				5F7CAA6B22CF32FD00F5081A /* ZSXBaseWCDBModel.m */,
 				5F7CAA6622CF320400F5081A /* NSObject+ZSXWCDBBaseHandle.h */,
 				5F7CAA6722CF320400F5081A /* NSObject+ZSXWCDBBaseHandle.mm */,
+				5F65195E22D2E8C7006B7235 /* ZSXWCDBConfig.h */,
 			);
 			path = WCDB_Utils;
 			sourceTree = "<group>";
@@ -369,6 +376,7 @@
 				5F7CAA6822CF320400F5081A /* NSObject+ZSXWCDBBaseHandle.mm in Sources */,
 				5F10D58A22CCA5D30046964E /* Message.mm in Sources */,
 				5F1506AA22CDFD5400B34BE3 /* MessageBG.m in Sources */,
+				5F65196122D2EBB4006B7235 /* ZSXRealmModel.m in Sources */,
 				5F1506B122CEE38700B34BE3 /* ZSXMessageModel.mm in Sources */,
 				5F7CAA6C22CF32FD00F5081A /* ZSXBaseWCDBModel.m in Sources */,
 				5F10D56622CC9B340046964E /* main.m in Sources */,
