@@ -136,7 +136,7 @@
         CFAbsoluteTime startTime2 = CFAbsoluteTimeGetCurrent();
         BOOL commited = [self.database runTransaction:^BOOL {
             for (int i = 0; i < count; i++) {
-                [self.database insertObject:message into:@"message"];
+                [self.database insertObject:self->message into:@"message"];
             }
             return YES; //return YES to commit transaction and return NO to rollback transaction.
         }];
@@ -277,7 +277,7 @@
         CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
         NSNumber *count = [self.database getOneValueOnResult:Message.AnyProperty.count() fromTable:@"message"];
         CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
-        NSString *log = [NSString stringWithFormat:@"查询表count耗时: %f ms\n", endTime * 1000.0];
+        NSString *log = [NSString stringWithFormat:@"WCDB查询表count耗时: %f ms\n", endTime * 1000.0];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.textView insertText:log];
         });
@@ -285,7 +285,7 @@
         startTime = CFAbsoluteTimeGetCurrent();
         [self.database updateAllRowsInTable:@"message" onProperty:Message.unused withValue:@(2)];
         endTime = (CFAbsoluteTimeGetCurrent() - startTime);
-        NSString *log2 = [NSString stringWithFormat:@"更新%@条数据耗时: %f ms\n\n", count, endTime * 1000.0];
+        NSString *log2 = [NSString stringWithFormat:@"WCDB更新%@条数据耗时: %f ms\n\n", count, endTime * 1000.0];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.textView insertText:log2];
         });
